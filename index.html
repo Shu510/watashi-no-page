@@ -1,113 +1,205 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)file:///C:/Users/shuhe/Downloads/index%20(1).html -->
+<!-- saved from url=(0049)file:///C:/Users/shuhe/Downloads/index%20(2).html -->
 <html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ゴンの趣味のページ ～麻雀～</title>
-  <style>
-    /* ===== 色や文字の大きさの設定 ===== */
-    body {
-      margin: 0;
-      background-color: #f7f3ea;   /* やわらかいクリーム色 */
-      color: #4a4a4a;              /* 目にやさしい濃いグレー */
-      font-family: "Hiragino Maru Gothic ProN", "メイリオ", "Meiryo", sans-serif;
-      font-size: 22px;             /* 文字は大きめ */
-      line-height: 1.9;
-    }
-    header {
-      background-color: #cfe3d4;   /* 雀卓をイメージした淡いみどり */
-      text-align: center;
-      padding: 40px 20px;
-    }
-    header h1 {
-      font-size: 44px;
-      margin: 0;
-      color: #3d6b4f;
-    }
-    header p {
-      font-size: 24px;
-      margin: 10px 0 0;
-    }
-    main {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    section {
-      background-color: #ffffff;
-      border-radius: 16px;
-      padding: 24px 30px;
-      margin: 28px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    h2 {
-      font-size: 30px;
-      color: #3d6b4f;
-      border-left: 10px solid #e8b4a0;  /* やさしいピンクの線 */
-      padding-left: 14px;
-      margin-top: 0;
-    }
-    .tiles {
-      font-size: 56px;             /* 麻雀牌の絵文字 */
-      text-align: center;
-      letter-spacing: 6px;
-    }
-    ul { padding-left: 1.3em; }
-    li { margin-bottom: 8px; }
-    footer {
-      text-align: center;
-      font-size: 18px;
-      color: #888888;
-      padding: 30px 10px;
-    }
-  </style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3社の最近の様子</title>
+<style>
+  :root {
+    --bg: #f5f3ee;
+    --card: #ffffff;
+    --text: #222222;
+    --muted: #555555;
+    --line: #dddddd;
+    --accent: #1f4e79;
+    --bull: #2e7d32;
+    --neutral: #c77700;
+    --bear: #c62828;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 20px;
+    line-height: 1.8;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 24px 16px 40px; }
+  header { text-align: center; margin-bottom: 28px; }
+  header h1 { font-size: 34px; margin: 0 0 6px; color: var(--accent); }
+  .date { font-size: 22px; color: var(--muted); }
+  .legend { margin-top: 12px; font-size: 18px; }
+  .legend .label { font-size: 17px; padding: 2px 12px; margin: 0 4px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 26px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  }
+  .card-head {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 10px;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 10px; margin-bottom: 16px;
+  }
+  .card-head h2 { margin: 0; font-size: 30px; }
+  .code { font-size: 20px; color: var(--muted); font-weight: normal; }
+
+  .label {
+    display: inline-block; color: #fff; font-weight: bold;
+    border-radius: 999px; padding: 6px 20px; font-size: 22px;
+  }
+  .bull { background: var(--bull); }
+  .neutral { background: var(--neutral); }
+  .bear { background: var(--bear); }
+  .note { font-size: 18px; color: var(--muted); margin-left: 6px; }
+
+  h3 { font-size: 23px; margin: 20px 0 6px; color: var(--accent); }
+  ul { margin: 0; padding-left: 1.3em; }
+  li { margin-bottom: 6px; }
+  p { margin: 0 0 6px; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--card); font-size: 19px; }
+  th, td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  th { background: #e8eef5; }
+  .summary h2 { font-size: 28px; margin: 0 0 14px; }
+
+  footer {
+    margin-top: 32px; padding: 20px; text-align: center;
+    background: #fff4e5; border: 2px solid var(--neutral); border-radius: 12px;
+    font-size: 22px; font-weight: bold;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 18px; }
+    header h1 { font-size: 27px; }
+    .card { padding: 18px 16px; }
+    .card-head h2 { font-size: 25px; }
+    table { font-size: 17px; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
 
-  <header>
-    <h1>ゴンの趣味のページ</h1>
-    <p>わたしの楽しみ　～麻雀～</p>
-  </header>
+<header>
+  <h1>3社の最近の様子</h1>
+  <div class="date">2026年10月18日（日）時点</div>
+  <div class="legend">
+    見通しの色：
+    <span class="label bull">強気</span>
+    <span class="label neutral">中立</span>
+    <span class="label bear">弱気</span>
+  </div>
+</header>
 
-  <main>
+<!-- 日本通信 -->
+<section class="card">
+  <div class="card-head">
+    <h2>日本通信 <span class="code">（9424）</span></h2>
+    <div><span class="label neutral">中立</span></div>
+  </div>
 
-    <section>
-      <h2>はじめまして</h2>
-      <p>こんにちは、ゴンです。このページでは、わたしの趣味の「麻雀」をご紹介します。</p>
-      <div class="tiles">🀇🀈🀉 🀙🀚🀛 🀀</div>
-    </section>
+  <h3>① 最近のニュース</h3>
+  <p>新しい携帯ブランド「blue mobile（ブルーモバイル）」を11月24日に始める予定です。これまでドコモから借りていた電話の仕組みの一部を自前で持てるようになり、料金や機能を自分たちで決められる幅が広がります。第2四半期の決算発表は11月5日の予定です。</p>
 
-    <section>
-      <h2>麻雀のここが好き</h2>
-      <ul>
-        <li>4人で卓を囲んで、会話しながら楽しめるところ</li>
-        <li>運と読みの両方が大切で、毎回ちがう展開になるところ</li>
-        <li>頭を使うので、いい脳のトレーニングになるところ</li>
-        <li>勝っても負けても、終わればみんな笑顔になれるところ</li>
-      </ul>
-    </section>
+  <h3>② 良い材料</h3>
+  <ul>
+    <li>30年近く目指してきた悲願の実現が目前。成功すれば会社の性格が変わる可能性があります。</li>
+    <li>売上は約12％、最終的な儲けは約18％伸びています。</li>
+    <li>今の格安プランも好調で、格安SIM会社の中でシェア5位に入っています。</li>
+  </ul>
 
-    <section>
-      <h2>好きな役</h2>
-      <ul>
-        <li><strong>リーチ</strong> … 「さあ来い！」とドキドキする瞬間がたまりません</li>
-        <li><strong>タンヤオ</strong> … 手軽で使いやすい、頼れる役です</li>
-        <li><strong>国士無双</strong> … 一度はあがってみたい、あこがれの役満です</li>
-      </ul>
-    </section>
+  <h3>③ 心配な材料</h3>
+  <ul>
+    <li>肝心の料金がまだ発表されていません。</li>
+    <li>当初の予定（2026年5月）から半年延期した経緯があり、緊急通報の仕組みもまだ準備中です。</li>
+    <li>借金をして株を買っている人がとても多く、下がり始めると下げが大きくなりやすい状態です。</li>
+    <li>株価は年初の155円から下がり、最近は119円前後。配当はありません。</li>
+  </ul>
 
-    <section>
-      <h2>わたしの麻雀ルール</h2>
-      <p>「楽しく・きれいに・礼儀正しく」がモットーです。<br>
-      あいさつをしっかりして、牌はていねいに扱います。</p>
-    </section>
+  <h3>④ 総合的な見通し</h3>
+  <p>11月は決算と新サービス開始が重なる「勝負の月」。料金が魅力的なら追い風、平凡だったり再延期になったりすれば失望売りが出やすいです。結果を見てからでも遅くない銘柄です。</p>
+</section>
 
-  </main>
+<!-- ソフトバンクグループ -->
+<section class="card">
+  <div class="card-head">
+    <h2>ソフトバンクグループ <span class="code">（9984）</span></h2>
+    <div><span class="label neutral">中立</span><span class="note">値動きは非常に荒い</span></div>
+  </div>
 
-  <footer>
-    © ゴンの趣味のページ
-  </footer>
+  <h3>① 最近のニュース</h3>
+  <p>10月1日、AI企業OpenAIへの最後の投資を終え、合計約646億ドル（約13％の持ち分）になりました。ところが、OpenAIの売上が予想より少ないと報じられ、10月9日には株価が一時7％以上下がり、5,803円で取引を終えました。</p>
 
+  <h3>② 良い材料</h3>
+  <ul>
+    <li>OpenAI自体は急成長中で、売上の勢いは前の期より77％増えたと報じられています。</li>
+    <li>6月には会社の値打ち（時価総額）がトヨタを抜いて日本一になったほど、AIへの期待を集めています。</li>
+    <li>OpenAIが株式上場すれば、持っている株の価値がはっきりして追い風になるとの見方があります。</li>
+  </ul>
+
+  <h3>③ 心配な材料</h3>
+  <ul>
+    <li>OpenAIへの頼り方がとても大きく、OpenAIの評判ひとつで株価が大きく揺れます。</li>
+    <li>高い利息での大きな借金による負担が心配されています。</li>
+    <li>今年の株価は安値3,365円〜高値9,074円と、約3倍の幅で動きました。高値からは今も4割近く下です。</li>
+    <li>OpenAIの上場の時期もはっきりしません。</li>
+  </ul>
+
+  <h3>④ 総合的な見通し</h3>
+  <p>長い目で見たAIの成長期待は本物ですが、「OpenAIがうまくいくか」への一点賭けに近い状態です。1日で7〜10％上下することもあるので、持つなら値下がりに耐えられる金額に抑えるのが慎重な考え方です。</p>
+</section>
+
+<!-- セーフィー -->
+<section class="card">
+  <div class="card-head">
+    <h2>セーフィー <span class="code">（4375）</span></h2>
+    <div><span class="label neutral">中立</span><span class="note">やや前向き</span></div>
+  </div>
+
+  <h3>① 最近のニュース</h3>
+  <p>防犯カメラの映像をインターネット上に保存するサービスの最大手です。8月の中間決算で黒字に転じ、売上は約104億円（前年より約2割増）、本業の利益は約1億円の黒字（前年は赤字）でした。次の決算は11月中旬の予定です。</p>
+
+  <h3>② 良い材料</h3>
+  <ul>
+    <li>長年の赤字から抜け出し、利益が出る体質になってきました。儲けの効率も上がっています。</li>
+    <li>業界シェア約55％のトップ。NTT・キヤノン・セコムが後ろ盾です。</li>
+    <li>毎月お金が入る「定額制」が中心で、売上が安定しやすい仕組みです。</li>
+    <li>借金に頼らない度合い（自己資本比率）が約78％と高く、財務が健全です。</li>
+  </ul>
+
+  <h3>③ 心配な材料</h3>
+  <ul>
+    <li>黒字といってもまだ小さく、半年の最終的な儲けは約6,600万円です。</li>
+    <li>利益に比べて株価がかなり高めの評価で、期待が裏切られると下がりやすいです。</li>
+    <li>専門家の今期利益予想が少し引き下げられました（4億円→3.75億円）。</li>
+    <li>株価は670円前後で低迷が続いています。</li>
+  </ul>
+
+  <h3>④ 総合的な見通し</h3>
+  <p>3社の中では会社の中身が最も着実に良くなっています。ただ株価は先の成長をある程度織り込んでいるので、11月の決算で「黒字が続くか」「契約カメラ台数が順調に増えているか」を確認したいところです。</p>
+</section>
+
+<!-- まとめ -->
+<section class="card summary">
+  <h2>まとめ：11月の注目点</h2>
+  <table>
+    <tbody><tr><th>会社</th><th>見通し</th><th>注目点</th></tr>
+    <tr><td>日本通信</td><td><span class="label neutral">中立</span></td><td>11/5決算、blue mobileの料金発表と11/24開始</td></tr>
+    <tr><td>ソフトバンクG</td><td><span class="label neutral">中立</span></td><td>OpenAI関連の報道、11月の決算</td></tr>
+    <tr><td>セーフィー</td><td><span class="label neutral">中立</span></td><td>11月中旬の決算で黒字が続くか</td></tr>
+  </tbody></table>
+</section>
+
+<footer>
+  この分析は参考情報であり、投資判断はご自身の責任で行ってください
+</footer>
+
+</div>
 
 
 </body></html>
