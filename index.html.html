@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3社の株式分析</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --text: #222222;
+    --sub: #555555;
+    --line: #e2ded5;
+    --accent: #1f3a5f;
+    --bull: #1e7b3c;
+    --bull-bg: #e3f4e8;
+    --neutral: #9a6a00;
+    --neutral-bg: #fdf1d6;
+    --bear: #b3261e;
+    --bear-bg: #fbe4e2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 20px;
+    line-height: 1.85;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 18px 48px; }
+
+  header { text-align: center; margin-bottom: 32px; }
+  .date {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 6px 22px;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+  h1 { font-size: 34px; margin: 18px 0 6px; color: var(--accent); }
+  .lead { color: var(--sub); margin: 0; }
+
+  .summary {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+  .summary h2 { font-size: 24px; margin: 0 0 12px; }
+  .summary table { width: 100%; border-collapse: collapse; }
+  .summary th, .summary td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .summary th { font-size: 18px; color: var(--sub); }
+  .summary tr:last-child td { border-bottom: none; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .card-head h2 { font-size: 30px; margin: 0; }
+  .code { font-size: 20px; color: var(--sub); font-weight: normal; margin-left: 6px; }
+
+  .label {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 4px 18px;
+    border-radius: 10px;
+    border: 2px solid;
+    white-space: nowrap;
+  }
+  .label.bull { color: var(--bull); background: var(--bull-bg); border-color: var(--bull); }
+  .label.neutral { color: var(--neutral); background: var(--neutral-bg); border-color: var(--neutral); }
+  .label.bear { color: var(--bear); background: var(--bear-bg); border-color: var(--bear); }
+
+  h3 {
+    font-size: 23px;
+    margin: 22px 0 8px;
+    color: var(--accent);
+  }
+  h3 .num {
+    display: inline-block;
+    width: 34px; height: 34px;
+    line-height: 34px;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 19px;
+    margin-right: 8px;
+  }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0; padding-left: 1.3em; }
+  li { margin-bottom: 8px; }
+
+  .outlook {
+    margin-top: 22px;
+    padding: 16px 20px;
+    border-radius: 12px;
+  }
+  .outlook.bull { background: var(--bull-bg); }
+  .outlook.neutral { background: var(--neutral-bg); }
+  .outlook.bear { background: var(--bear-bg); }
+  .outlook h3 { margin-top: 0; }
+
+  .sources { font-size: 16px; color: var(--sub); margin-top: 36px; }
+  .sources h2 { font-size: 20px; }
+  .sources a { color: var(--accent); word-break: break-all; }
+
+  footer {
+    margin-top: 36px;
+    padding: 22px;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 14px;
+    font-size: 21px;
+    font-weight: bold;
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 19px; }
+    h1 { font-size: 28px; }
+    .card { padding: 20px 18px; }
+    .card-head h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="date">2026年10月20日（火）</div>
+    <h1>3社の株式分析</h1>
+    <p class="lead">日本通信・ソフトバンクグループ・セーフィーの最近の様子</p>
+  </header>
+
+  <section class="summary">
+    <h2>ひと目でわかるまとめ</h2>
+    <table>
+      <tr><th>会社</th><th>見通し</th><th>次に注目するところ</th></tr>
+      <tr>
+        <td>日本通信</td>
+        <td><span class="label neutral">中立</span></td>
+        <td>11月24日に新サービスが予定どおり始まるか、料金と利用者数</td>
+      </tr>
+      <tr>
+        <td>ソフトバンクG</td>
+        <td><span class="label bear">弱気</span></td>
+        <td>OpenAIの上場の話、借金の心配が落ち着くか</td>
+      </tr>
+      <tr>
+        <td>セーフィー</td>
+        <td><span class="label neutral">中立</span></td>
+        <td>11月中旬の決算で黒字が続いているか</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- 日本通信 -->
+  <article class="card">
+    <div class="card-head">
+      <h2>日本通信<span class="code">（9424）</span></h2>
+      <span class="label neutral">中立</span>
+    </div>
+
+    <h3><span class="num">1</span>最近のニュース</h3>
+    <p>いちばん大きな話題は、自前の携帯サービスを始めることです。NTTドコモの音声とSMSの回線に直接つなぎ、11月24日に新ブランド「blue mobile」を始める予定です。これまでは大手から回線を借りる格安SIMの会社でしたが、これからは自分で電話番号やSIMを持つ会社になります。</p>
+
+    <h3><span class="num">2</span>良い材料</h3>
+    <ul>
+      <li>売上は毎年大きく伸びています。2026年3月期の売上は約116億円で、前の年より約26%増えました。</li>
+      <li>新サービスが始まると、これまで格安SIMではできなかった海外での利用や、自由に料金を決めた通話プランが出せるようになります。</li>
+      <li>2030年度に売上650億円、営業利益150億円という大きな長期目標を掲げています（今の規模の5倍以上）。</li>
+    </ul>
+
+    <h3><span class="num">3</span>心配な材料</h3>
+    <ul>
+      <li>準備にお金を使っているため、利益が減っています。2026年4〜6月期の利益は前年の同じ時期より約25%減りました。</li>
+      <li>借金が増えています。借入金などは約23億円から約57億円に増え、会社の財産のうち自分のお金の割合は50.4%から37.6%に下がりました。</li>
+      <li>新サービスは一度延期しています（当初5月24日→11月24日）。予定どおり始まるか、利用者が集まるかはまだわかりません。</li>
+      <li>今期の業績予想と配当は出ていません。</li>
+    </ul>
+
+    <div class="outlook neutral">
+      <h3><span class="num">4</span>総合的な見通し：<span class="label neutral">中立</span></h3>
+      <p>11月24日の開始が近く、期待と不安の両方が大きい時期です。「始まってから、料金や利用者の数を見て判断する」という姿勢が安全だと思います。</p>
+    </div>
+  </article>
+
+  <!-- ソフトバンクグループ -->
+  <article class="card">
+    <div class="card-head">
+      <h2>ソフトバンクグループ<span class="code">（9984）</span></h2>
+      <span class="label bear">弱気</span>
+    </div>
+
+    <h3><span class="num">1</span>最近のニュース</h3>
+    <p>株価の上下がとても激しくなっています。6月にはAI関連への投資が評価され、会社の価値が48兆円を超えてトヨタを抜き国内1位になりました。その後は下がり続け、10月20日も株価は約6%下がって4,554円になりました。お金の借り方や返済力について市場の評価が急に悪くなったためです。年初来の高値（9,074円）から見ると、ほぼ半分になっています。</p>
+
+    <h3><span class="num">2</span>良い材料</h3>
+    <ul>
+      <li>大きな投資先であるOpenAI（ChatGPTを作っている会社）への投資は合計646億ドル、持ち分は約13%になりました。OpenAIが将来上場すれば、大きな利益になる可能性があります。</li>
+      <li>OpenAIの上場の話が出ると株価が大きく上がります。5月には上場申請の報道で、1日で18%以上上がりました。</li>
+      <li>株価が大きく下がったので、「割安になった」と考える人もいます。</li>
+    </ul>
+
+    <h3><span class="num">3</span>心配な材料</h3>
+    <ul>
+      <li>OpenAIの稼ぎが期待より少ないと報じられました。9月末の年間売上ペースは約500億ドルで、予想されていた約700億ドルを下回りました。</li>
+      <li>9月にはOpenAIの上場見送りの報道で、株価が一時12.5%下がりました。</li>
+      <li>高い利息で大きな社債を出すなど、借金をして投資しており、お金の負担が心配されています。</li>
+      <li>「OpenAI次第」の会社になっており、その会社は上場していないため中身が見えにくい、という弱点があります。</li>
+    </ul>
+
+    <div class="outlook bear">
+      <h3><span class="num">4</span>総合的な見通し：<span class="label bear">弱気</span></h3>
+      <p>長い目で見れば大化けの可能性はありますが、今は「借金の心配」と「OpenAIへの不安」が重なり、下がる流れが続いています。流れが落ち着くまで待つのが無難と考えます。ただし、良いニュース一つで急に大きく上がる株でもあるので、逆の賭けはさらに危険です。</p>
+    </div>
+  </article>
+
+  <!-- セーフィー -->
+  <article class="card">
+    <div class="card-head">
+      <h2>セーフィー<span class="code">（4375）</span></h2>
+      <span class="label neutral">中立</span>
+    </div>
+
+    <h3><span class="num">1</span>最近のニュース</h3>
+    <p>防犯カメラの映像をインターネット上に保存するサービスの会社です。2026年1〜6月の売上は前年より約20%増えて約104億円になり、本業の利益は前年の赤字から1億400万円の黒字に変わりました。株価は10月20日の終値で661円、最近は650〜700円くらいで横ばいが続いています。</p>
+
+    <h3><span class="num">2</span>良い材料</h3>
+    <ul>
+      <li>毎月お金をもらう契約が伸びています。年間の契約収入は158億円で、前年より約23%増えました。続きやすく、安定した収入です。</li>
+      <li>売上のうち手元に残る割合が52.3%まで上がり、儲けの割合が良くなっています。</li>
+      <li>工事会社を仲間に加え、カメラの販売から工事まで引き受ける体制を作っています。</li>
+      <li>会社の財産のうち自分のお金の割合は約78%で、財務は健全です。</li>
+    </ul>
+
+    <h3><span class="num">3</span>心配な材料</h3>
+    <ul>
+      <li>黒字になったばかりで利益はまだ小さく、会社は通期の利益予想を出していません（売上予想は232億円）。</li>
+      <li>株価が利益の何倍かを示す数字は約85倍で、期待がすでに株価に入っています。</li>
+      <li>専門家の利益予想の平均は、4週間前の4億円から3.75億円に少し下がりました。</li>
+      <li>配当はありません。</li>
+    </ul>
+
+    <div class="outlook neutral">
+      <h3><span class="num">4</span>総合的な見通し：<span class="label neutral">中立</span></h3>
+      <p>事業は順調に伸びており、会社の中身は良くなっています。ただし株価はその期待をある程度含んでいます。11月中旬の7〜9月の決算で、黒字が続いているかが次の確認ポイントです。</p>
+    </div>
+  </article>
+
+  <section class="sources">
+    <h2>主な情報源</h2>
+    <ul>
+      <li><a href="https://www.release.tdnet.info/inbs/140120260805510175.pdf">日本通信 2027年3月期 第1四半期決算短信</a></li>
+      <li><a href="https://www.itmedia.co.jp/mobile/articles/2607/29/news049.html">日本通信が新ブランド「blue mobile」を発表（ITmedia Mobile）</a></li>
+      <li><a href="https://edinetdb.jp/company/9424">日本通信 財務データ（EDINET DB）</a></li>
+      <li><a href="https://jp.investing.com/news/stock-market-news/article-93CH-1717167">ソフトバンク株が本日6%下落した理由（Investing.com）</a></li>
+      <li><a href="https://www.tradingkey.com/jp/analysis/stocks/us-stocks/262207988-softbank-stock-prediction-openai-revenue-valuation-tradingkey">ソフトバンク株価見通し：OpenAIの売上高データ（TradingKey）</a></li>
+      <li><a href="https://kumanichi.com/articles/1997495">ソフトバンクGの時価総額首位 AI投資でトヨタ超え（共同通信）</a></li>
+      <li><a href="https://finance.yahoo.co.jp/quote/4375.T">セーフィー 株価・業績（Yahoo!ファイナンス）</a></li>
+      <li><a href="https://kabuyoho.jp/sp/reportAnalyst?bcode=4375">セーフィー アナリスト予想（株予報）</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    この分析は参考情報であり、投資判断はご自身の責任で行ってください
+  </footer>
+
+</div>
+</body>
+</html>
